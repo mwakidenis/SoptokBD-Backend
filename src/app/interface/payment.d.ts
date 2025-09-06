@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 declare module 'sslcommerz-lts' {
   interface SSLCommerzInitData {
     total_amount: number;
@@ -32,6 +33,7 @@ declare module 'sslcommerz-lts' {
 
   class SSLCommerzPayment {
     constructor(storeId: string, storePassword: string, isLive: boolean);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     init(data: SSLCommerzInitData): Promise<any>;
   }
 
