@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextFunction, Request, Response } from 'express';
-import { TUserRole } from '../modules/user/user.interface';
 import catchAsync from '../utils/catchAsync';
 import httpStatus from 'http-status';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
-import { User } from '../modules/user/user.model';
 import config from '../config';
 import AppError from '../errors/AppError';
+import { User } from '../modules/user/user.model';
+import { TUserRole } from '../modules/user/user.interface';
 
 export const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -23,11 +26,11 @@ export const auth = (...requiredRoles: TUserRole[]) => {
         accessToken,
         config.jwt_access_secret as string,
       ) as JwtPayload;
-    } catch (error) {
+    } catch (err: any) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'Unauthorized');
     }
 
-    const { id, role, email, iat } = decoded;
+    const { id, role } = decoded;
 
     const user = await User.findById(id);
 

@@ -1,12 +1,12 @@
-import { TErrorSources } from './../interface/error';
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
-import config from '../config';
-import AppError from '../errors/AppError';
+import { TErrorSources } from '../interface/error';
+import handleZodError from '../errors/handleZodError';
+import handleValidationError from '../errors/handleValidationError';
 import handleCastError from '../errors/handleCastError';
 import handleDuplicateError from '../errors/handleDuplicateError';
-import handleValidationError from '../errors/handleValidationError';
-import handleZodError from '../errors/handleZodError';
+import AppError from '../errors/AppError';
+import config from '../config';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCode = 500;
