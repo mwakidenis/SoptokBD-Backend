@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import validateRequest from '../../middlewares/validateRequest';
 import { OrderValidationSchema } from './order.validation';
-import { OrderController } from './order.controller';
 import { USER_ROLE } from '../user/user.constant';
 import { auth } from '../../middlewares/auth';
+import { OrderController } from './order.controller';
 
 const router = Router();
 
