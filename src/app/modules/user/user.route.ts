@@ -27,6 +27,7 @@ router.patch(
   UserControllers.updatePassword,
 );
 
+// getAllUsers
 router.get('/', auth(USER_ROLE.admin), UserControllers.getAllUsers);
 
 router.get(

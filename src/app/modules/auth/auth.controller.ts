@@ -21,7 +21,7 @@ const login: RequestHandler = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: 200,
-    message: `🎉 Welcome back, ${name.toUpperCase()}! You’ve logged in successfully.`,
+    message: `Welcome back, ${name.toUpperCase()}! You’ve logged in successfully.`,
     data: { userInfo, accessToken, refreshToken },
   });
 });
