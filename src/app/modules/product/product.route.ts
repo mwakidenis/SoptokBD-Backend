@@ -10,7 +10,7 @@ const router = Router();
 
 router.post(
   '/create-product',
-  auth(USER_ROLE.admin),p
+  auth(USER_ROLE.admin),
   validateRequest(ProductValidation.createProductValidation),
   ProductControllers.createProduct,
 );
