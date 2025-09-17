@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { PaymentController } from './payment.controller';
 import { USER_ROLE } from '../user/user.constant';
 import { auth } from '../../middlewares/auth';
+import { PaymentController } from './payment.controller';
 
 const router = Router();
 
