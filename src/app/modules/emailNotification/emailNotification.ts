@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import nodemailer from 'nodemailer';
 
@@ -13,7 +14,7 @@ export async function sendTestEmail(
     secure: true,
     auth: {
       user: 'ishtiak.sparrow98@gmail.com',
-      pass: 'bcoyaoacwnfmvxye',
+      pass: 'bcoyaoacwnfmvxyr',
     },
     tls: {
       rejectUnauthorized: false,
