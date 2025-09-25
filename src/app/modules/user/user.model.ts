@@ -21,7 +21,7 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
+      enum: ['user', 'admin', 'superAdmin'],
       default: 'user',
     },
   },
@@ -44,11 +44,6 @@ userSchema.post('save', function (doc, next) {
 
   next();
 });
-
-// userSchema.pre('findOne', function (next) {
-//   this.select('-password');
-//   next();
-// });
 
 userSchema.pre('find', function (next) {
   this.select('-password');

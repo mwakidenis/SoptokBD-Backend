@@ -24,12 +24,16 @@ router.get('/', ProductControllers.getAllProducts);
 // updateProduct
 router.patch(
   '/:id',
-  auth(USER_ROLE.admin),
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
   validateRequest(ProductValidation.updateProductValidation),
   ProductControllers.updateProduct,
 );
 
 // deleteProduct
-router.delete('/:id', auth(USER_ROLE.admin), ProductControllers.deleteProduct);
+router.delete(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
+  ProductControllers.deleteProduct,
+);
 
 export const ProductRouter = router;

@@ -83,6 +83,20 @@ const updatePassword: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const updateUserRole: RequestHandler = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.body;
+
+  const result = await UserServices.updateUserRoleIntoDB(id, role);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: HttpStatus.OK,
+    message: `User role updated to ${role}`,
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createUser,
   getSingleUser,
@@ -90,4 +104,5 @@ export const UserControllers = {
   getAllUsers,
   updatePassword,
   updateUser,
+  updateUserRole,
 };

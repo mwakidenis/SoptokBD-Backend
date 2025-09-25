@@ -4,7 +4,6 @@ type TOrderedProduct = {
   name: string;
   quantity: number;
   price: number;
-  requiredPrescription: boolean;
 };
 
 export type TOrder = {
@@ -19,7 +18,6 @@ export type TOrder = {
   };
   shippingCost: number;
   totalPrice: number;
-  prescriptionReviewStatus: 'pending' | 'ok' | 'cancelled';
   orderStatus: 'pending' | 'shipped' | 'delivered' | 'cancelled';
   paymentStatus: boolean;
 };

@@ -6,7 +6,7 @@ export type TUser = {
   name: string;
   email: string;
   password: string;
-  role: 'user' | 'admin';
+  role: 'user' | 'admin' | 'superAdmin';
 };
 
 export interface UserModel extends Model<TUser> {

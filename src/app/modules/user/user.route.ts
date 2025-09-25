@@ -28,14 +28,27 @@ router.patch(
 );
 
 // getAllUsers
-router.get('/', auth(USER_ROLE.admin), UserControllers.getAllUsers);
+router.get(
+  '/',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
+  UserControllers.getAllUsers,
+);
 
 router.get(
   '/:id',
-  auth(USER_ROLE.admin, USER_ROLE.user),
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin, USER_ROLE.user),
   UserControllers.getSingleUser,
 );
 
-router.delete('/:id', auth(USER_ROLE.admin), UserControllers.deleteUser);
+// router.delete('/:id', auth(USER_ROLE.admin), UserControllers.deleteUser);
+router.delete('/:id', auth(USER_ROLE.superAdmin), UserControllers.deleteUser);
+
+// update user role by superAdmin
+router.patch(
+  '/update-role/:id',
+  auth(USER_ROLE.superAdmin), // only superAdmin can update roles
+  validateRequest(UserValidation.updateUserRoleValidation),
+  UserControllers.updateUserRole,
+);
 
 export const UserRouter = router;

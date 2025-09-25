@@ -125,6 +125,18 @@ const updatePasswordIntoDB = async (
   return result;
 };
 
+const updateUserRoleIntoDB = async (
+  id: string,
+  role: 'user' | 'admin' | 'superAdmin',
+) => {
+  const user = await User.findById(id);
+  if (!user) throw new Error('User not found');
+
+  user.role = role;
+  await user.save();
+  return user;
+};
+
 export const UserServices = {
   createUserIntoDB,
   deleteSingleUserFromDB,
@@ -132,4 +144,5 @@ export const UserServices = {
   getAllUsersFromDB,
   updateUserIntoDB,
   updatePasswordIntoDB,
+  updateUserRoleIntoDB,
 };

@@ -7,7 +7,6 @@ const orderedProductSchema = new Schema(
     name: { type: String, required: true },
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
-    requiredPrescription: { type: Boolean, required: true },
   },
   { _id: false },
 );
@@ -30,11 +29,6 @@ const orderSchema = new Schema<TOrder>(
     },
     shippingCost: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
-    prescriptionReviewStatus: {
-      type: String,
-      enum: ['pending', 'ok', 'cancelled'],
-      default: 'pending',
-    },
     orderStatus: {
       type: String,
       enum: ['pending', 'shipped', 'delivered', 'cancelled'],

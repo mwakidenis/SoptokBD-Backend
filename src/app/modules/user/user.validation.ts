@@ -6,8 +6,11 @@ const createUserValidation = z.object({
     email: z
       .string({ required_error: 'Email is required' })
       .email({ message: 'Invalid email format' }),
-    password: z.string().min(6).max(12),
-    role: z.enum(['user', 'admin']).default('user'),
+    password: z
+      .string()
+      .min(6, { message: 'Password must be at least 6 characters' })
+      .max(12, { message: 'Password must be at most 12 characters' }),
+    role: z.enum(['user', 'admin', 'superAdmin']).default('user'),
   }),
 });
 
@@ -18,9 +21,26 @@ const updateUserValidation = z.object({
       .string({ required_error: 'Email is required' })
       .email({ message: 'Invalid email format' })
       .optional(),
-    password: z.string().min(6).max(12).optional(),
-    role: z.enum(['user', 'admin']).default('user').optional(),
+    password: z
+      .string()
+      .min(6, { message: 'Password must be at least 6 characters' })
+      .max(12, { message: 'Password must be at most 12 characters' })
+      .optional(),
+    role: z.enum(['user', 'admin', 'superAdmin']).default('user').optional(),
   }),
 });
 
-export const UserValidation = { createUserValidation, updateUserValidation };
+const updateUserRoleValidation = z.object({
+  body: z.object({
+    role: z.enum(['user', 'admin', 'superAdmin'], {
+      required_error: 'Role is required',
+      invalid_type_error: 'Invalid role',
+    }),
+  }),
+});
+
+export const UserValidation = {
+  createUserValidation,
+  updateUserValidation,
+  updateUserRoleValidation,
+};

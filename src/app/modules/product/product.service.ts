@@ -15,7 +15,7 @@ const createProductIntoDB = async (payload: TProduct) => {
 const getSingleProductFromDB = async (id: string) => {
   const product = await Product.findById(id);
   if (!product) {
-    throw new AppError(httpStatus.NOT_FOUND, 'No Medicine is  found!');
+    throw new AppError(httpStatus.NOT_FOUND, 'No Product is  found!');
   }
   const result = await Product.findById(id);
   return result;
@@ -39,7 +39,7 @@ const getProductsFromDB = async (query: Record<string, unknown>) => {
 const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
   const product = await Product.findById(id);
   if (!product) {
-    throw new AppError(httpStatus.NOT_FOUND, 'No Medicine is found!');
+    throw new AppError(httpStatus.NOT_FOUND, 'No product is found!');
   }
   const result = await Product.findByIdAndUpdate(id, payload, {
     new: true,
@@ -52,7 +52,7 @@ const updateProductFromDB = async (id: string, payload: Partial<TProduct>) => {
 const deleteProductFromDB = async (id: string) => {
   const product = await Product.findById(id);
   if (!product) {
-    throw new AppError(httpStatus.NOT_FOUND, 'No Medicine is found!');
+    throw new AppError(httpStatus.NOT_FOUND, 'No Product is found!');
   }
   const result = await Product.findByIdAndDelete(id);
   return result;
