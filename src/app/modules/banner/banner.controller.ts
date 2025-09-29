@@ -16,7 +16,32 @@ const createBanner: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+// getAllBanners
+const getAllBanners: RequestHandler = catchAsync(async (req, res) => {
+  const result = await BannerServices.getBannersFromDB();
+  sendResponse(res, {
+    success: true,
+    statusCode: HttpStatus.OK,
+    message: 'Banners are retrieved successfully',
+    data: result,
+  });
+});
+
+// deleteProduct
+const deleteBanner: RequestHandler = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await BannerServices.deleteBannerFromDB(id);
+  sendResponse(res, {
+    success: true,
+    statusCode: HttpStatus.OK,
+    message: 'Banner is deleted successfully',
+    data: result,
+  });
+});
+
 // exporting all controllers
 export const BannerControllers = {
   createBanner,
+  getAllBanners,
+  deleteBanner,
 };

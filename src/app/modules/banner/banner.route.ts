@@ -15,4 +15,14 @@ router.post(
   BannerControllers.createBanner,
 );
 
+// getAllBanners
+router.get('/', BannerControllers.getAllBanners);
+
+// deleteBanner
+router.delete(
+  '/:id',
+  auth(USER_ROLE.superAdmin),
+  BannerControllers.deleteBanner,
+);
+
 export const BannerRouter = router;

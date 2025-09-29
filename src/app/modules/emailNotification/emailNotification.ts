@@ -13,8 +13,8 @@ export async function sendTestEmail(
     port: 465,
     secure: true,
     auth: {
-      user: 'ishtiak.sparrow98@gmail.com',
-      pass: 'bcoyaoacwnfmvxyr',
+      user: 'soptokbd.info@gmail.com',
+      pass: 'ztngmvrdcaxzxzkb',
     },
     tls: {
       rejectUnauthorized: false,
@@ -23,7 +23,7 @@ export async function sendTestEmail(
 
   try {
     const mailOptions = {
-      from: '"SoptokBD" <support@soptokbdcommerce.com>',
+      from: '"SoptokBD" <soptokbd.info@gmail.com>',
       to,
       subject,
       html: `<!DOCTYPE html>
@@ -110,7 +110,7 @@ export async function sendTestEmail(
       <div class="footer">
         <p>Best regards,</p>
         <p><strong>SoptokDB Team</strong></p>
-        <p>support@soptokbdcommerce.com</p>
+        <p>soptokbd.info@gmail.com</p>
       </div>
     </div>
   </body>
