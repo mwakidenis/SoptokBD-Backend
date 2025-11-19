@@ -94,7 +94,7 @@ export async function sendTestEmail(
   <body>
     <div class="container">
       <div class="header">
-        <h1>Medicommerce</h1>
+        <h1>SoptokBD</h1>
       </div>
       <div class="content">
         <p>Hi ${name},</p>
